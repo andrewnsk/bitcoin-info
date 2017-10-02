@@ -10,11 +10,42 @@
         </b-navbar-brand>
       </b-navbar>
 
+      <div>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Валюта</th>
+            <th>Покупка</th>
+            <th>Продажа</th>
+            <th>Последняя</th>
+            <th>Символ</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>Валюта</th>
+            <th>Покупка</th>
+            <th>Продажа</th>
+            <th>Последняя</th>
+            <th>Символ</th>
+          </tr>
+          </tfoot>
+          <tbody>
+          <tr v-for="(value, key) in currency">
+            <td>{{ key }}</td>
+            <td>{{ value.buy }}</td>
+            <td>{{ value.sell }}</td>
+            <td>{{ value.last }}</td>
+            <td>{{ value.symbol }}</td>
+          </tr>
 
-    <div id="currency" v-for="(value, key) in currency">
+          </tbody>
+        </table>
+      </div>
+<!--    <div id="currency" v-for="(value, key) in currency">
       <span class="left">{{ key }}</span>
       <span class="right">{{ value.last }} {{ value.symbol }}</span>
-    </div>
+    </div>-->
 
     </b-container>
 
@@ -51,7 +82,20 @@
     name: 'info',
     data: () => ({
       currency: [],
-      errors: []
+      errors: [],
+
+      fields: [
+        {
+          key: 'symbol',
+          sortable: true
+        },
+        {
+          key: 'buy',
+          sortable: false
+        }
+      ],
+      data_items: [
+      ]
     }),
 
     created () {
